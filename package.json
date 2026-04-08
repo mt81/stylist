@@ -1,0 +1,22 @@
+{
+  "name": "stylist",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Stylist monorepo",
+  "scripts": {
+    "dev:api": "pnpm --filter @stylist/api dev",
+    "dev:web": "pnpm --filter @stylist/web dev",
+    "build": "pnpm --filter './apps/*' --filter './packages/*' build",
+    "typecheck": "pnpm --filter './apps/*' --filter './packages/*' typecheck",
+    "lint": "pnpm --filter './apps/*' --filter './packages/*' lint",
+    "clean": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'dist' -type d -prune -exec rm -rf '{}' +"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.0.0"
+}

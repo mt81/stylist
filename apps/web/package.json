@@ -1,0 +1,26 @@
+{
+  "name": "@stylist/web",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "quasar dev",
+    "build": "quasar build",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "@stylist/shared": "workspace:*",
+    "@quasar/extras": "^1.16.0",
+    "quasar": "^2.16.0",
+    "vue": "^3.4.0",
+    "vue-router": "^4.3.0",
+    "pinia": "^2.1.0"
+  },
+  "devDependencies": {
+    "@quasar/app-vite": "^2.0.0",
+    "@types/node": "^20.0.0",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "typescript": "^5.5.0",
+    "vue-tsc": "^2.0.0"
+  }
+}
