@@ -5,7 +5,18 @@
       "Bash(pnpm:*)",
       "Bash(claude mcp:*)",
       "Bash(npx -y @delorenj/mcp-server-trello --help)",
-      "mcp__trello__list_boards"
+      "mcp__trello__list_boards",
+      "mcp__trello__set_active_board",
+      "mcp__trello__get_lists",
+      "mcp__trello__get_cards_by_list_id",
+      "mcp__trello__get_checklist_items",
+      "mcp__trello__get_card",
+      "Bash(git checkout:*)",
+      "Bash(git pull:*)",
+      "mcp__trello__move_card",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(docker compose up:*)"
     ]
   }
 }

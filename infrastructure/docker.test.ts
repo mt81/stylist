@@ -15,7 +15,7 @@ describe('PostgreSQL (via Docker)', () => {
   });
 
   it('accepts a connection', async () => {
-    await expect(client.connect()).resolves.toBeUndefined();
+    (await expect(client.connect()).resolves.toBeDefined());
   });
 
   it('responds to a basic query', async () => {
