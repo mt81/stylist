@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER:-stylist}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-stylist}
+      POSTGRES_DB: ${DB_NAME:-stylist}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-stylist}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile.dev
+    volumes:
+      - ./apps/api/src:/app/apps/api/src
+    working_dir: /app
+    command: pnpm --filter @stylist/api dev:docker
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: db
+      DB_PORT: ${DB_PORT:-5432}
+      DB_USER: ${DB_USER:-stylist}
+      DB_PASSWORD: ${DB_PASSWORD:-stylist}
+      DB_NAME: ${DB_NAME:-stylist}
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
