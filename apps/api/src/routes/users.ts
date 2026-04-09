@@ -1,20 +1,20 @@
-import { Hono } from 'hono';
+import type { FastifyPluginAsync } from 'fastify';
 import type { ApiResponse, User } from '@stylist/shared';
 
-const users = new Hono();
+const users: FastifyPluginAsync = async (app) => {
+  app.get<{ Params: { id: string } }>('/:id', async (request) => {
+    const { id } = request.params;
 
-users.get('/:id', (c) => {
-  const id = c.req.param('id');
+    const stub: User = {
+      id,
+      email: 'stub@example.com',
+      role: 'user',
+      createdAt: new Date(),
+    };
 
-  const stub: User = {
-    id,
-    email: 'stub@example.com',
-    role: 'user',
-    createdAt: new Date(),
-  };
-
-  const response: ApiResponse<User> = { data: stub };
-  return c.json(response);
-});
+    const response: ApiResponse<User> = { data: stub };
+    return response;
+  });
+};
 
 export default users;

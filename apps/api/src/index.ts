@@ -1,16 +1,5 @@
-import { Hono } from 'hono';
-import { cors } from 'hono/cors';
-import { logger } from 'hono/logger';
+import { buildApp } from './app.js';
 
-import health from './routes/health.js';
-import users from './routes/users.js';
-
-const app = new Hono();
-
-app.use('*', logger());
-app.use('*', cors());
-
-app.route('/health', health);
-app.route('/users', users);
-
-export default app;
+const app = await buildApp();
+const port = 3000;
+await app.listen({ port, host: '0.0.0.0' });
