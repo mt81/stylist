@@ -15,8 +15,11 @@
       "Bash(git pull:*)",
       "mcp__trello__move_card",
       "Bash(git add:*)",
-      "Bash(git commit -m ':*)",
-      "Bash(docker compose up:*)"
+      "Bash(git commit *)",
+      "Bash(docker compose up:*)",
+      "Bash(git push:*)",
+      "Bash(gh pr:*)",
+      "mcp__trello__add_comment"
     ]
   }
 }
